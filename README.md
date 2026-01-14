@@ -166,33 +166,8 @@ This tutor implements principles from:
 - **Worked Examples**: Multiple solution paths demonstrated
 - **Metacognitive Support**: Three-level hints encourage self-reflection
 
-## 🤝 Contributing
-
-Contributions welcome! Ideas for enhancement:
-- [ ] Add more complex problems with disjunctions
-- [ ] Implement backward-chaining logic tutors
-- [ ] Add visualization of fact knowledge base
-- [ ] Create assessment/grading module
-- [ ] Multi-language support
-
 ## 📝 License
 
 This project is educational material. Free to use for academic purposes.
 
-## 👥 Authors
-
-- **Your Name** - Initial work - [YourGitHub](https://github.com/YOUR-USERNAME)
-
-## 🙏 Acknowledgments
-
-- Carnegie Mellon University for CTAT framework
-- Course instructor for project requirements
-- CTAT community for documentation and support
-
-## 📧 Contact
-
-Questions? Open an issue or contact: your.email@example.com
-
----
-
-**Note**: This is a student project for Technology-Enhanced Adaptive Learning course.
+**Note**: This is a student project for Adaptive Systems course at UPM.
