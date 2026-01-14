@@ -1,0 +1,22 @@
+# CTAT Library files (too large for GitHub)
+CTAT/
+ctat/
+*.jar
+*.class
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+*.log

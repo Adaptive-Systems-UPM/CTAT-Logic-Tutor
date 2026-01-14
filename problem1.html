@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logic Rules - Problem 1</title>
+    <meta charset="utf-8"/>
+    <style>
+        /* Inline CSS since external file is missing */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .problem-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 20px;
+        }
+        .rules-section {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .rules-section ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        .rules-section li {
+            margin: 8px 0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .instructions {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fff9e6;
+            border-left: 4px solid #f39c12;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+        .label {
+            width: 200px;
+            text-align: right;
+            padding-right: 15px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        input {
+            width: 150px;
+            padding: 8px;
+            font-size: 14px;
+            border: 2px solid #bdc3c7;
+            border-radius: 4px;
+        }
+        input.correct {
+            border-color: #27ae60;
+            background-color: #d5f4e6;
+        }
+        input.incorrect {
+            border-color: #e74c3c;
+            background-color: #fadbd8;
+        }
+        button {
+            padding: 10px 30px;
+            font-size: 16px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #229954;
+        }
+        .button-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .success {
+            background-color: #d5f4e6;
+            color: #27ae60;
+            border: 2px solid #27ae60;
+        }
+        .error {
+            background-color: #fadbd8;
+            color: #e74c3c;
+            border: 2px solid #e74c3c;
+        }
+        .hint {
+            background-color: #e8f4f8;
+            color: #2980b9;
+            border: 2px solid #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="problem-container">
+        <h1>Problem 1: Rule Firing Exercise</h1>
+        
+        <div class="rules-section">
+            <h3>Given the following rules:</h3>
+            <ul>
+                <li>R1: A → B</li>
+                <li>R2: B → C</li>
+                <li>R3: C → D</li>
+            </ul>
+            <p><strong>Known fact: A is true</strong></p>
+        </div>
+        
+        <div class="instructions">
+            <p>Identify the rules that will be fired, in which sequence, and the facts that will be deduced:</p>
+        </div>
+        
+        <div class="solution-section">
+            <table>
+                <tr>
+                    <td class="label">First fired rule:</td>
+                    <td><input type="text" id="rule1" /></td>
+                </tr>
+                <tr>
+                    <td class="label">Deduced fact:</td>
+                    <td><input type="text" id="fact1" /></td>
+                </tr>
+                <tr>
+                    <td class="label">Second fired rule:</td>
+                    <td><input type="text" id="rule2" /></td>
+                </tr>
+                <tr>
+                    <td class="label">Deduced fact:</td>
+                    <td><input type="text" id="fact2" /></td>
+                </tr>
+                <tr>
+                    <td class="label">Third fired rule:</td>
+                    <td><input type="text" id="rule3" /></td>
+                </tr>
+                <tr>
+                    <td class="label">Deduced fact:</td>
+                    <td><input type="text" id="fact3" /></td>
+                </tr>
+            </table>
+            
+            <div class="button-container">
+                <button id="done" onclick="checkAnswers()">Done</button>
+            </div>
+            
+            <div id="feedback"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Correct answers (case-insensitive)
+        const correctAnswers = {
+            rule1: 'R1',
+            fact1: 'B',
+            rule2: 'R2',
+            fact2: 'C',
+            rule3: 'R3',
+            fact3: 'D'
+        };
+        
+        // Track which fields have been filled
+        let currentStep = 0;
+        
+        // Real-time validation as user types
+        document.querySelectorAll('input').forEach((input, index) => {
+            input.addEventListener('blur', function() {
+                validateField(this);
+            });
+            
+            input.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    validateField(this);
+                }
+            });
+        });
+        
+        function validateField(input) {
+            const id = input.id;
+            const userAnswer = input.value.trim().toUpperCase();
+            const correctAnswer = correctAnswers[id];
+            const feedback = document.getElementById('feedback');
+            
+            if (userAnswer === '') {
+                input.className = '';
+                return;
+            }
+            
+            if (userAnswer === correctAnswer) {
+                input.className = 'correct';
+                showSuccessMessage(id);
+            } else {
+                input.className = 'incorrect';
+                showErrorMessage(id, userAnswer);
+            }
+        }
+        
+        function showSuccessMessage(id) {
+            const messages = {
+                rule1: "Correct! R1 can fire because A is true.",
+                fact1: "Correct! R1 deduces B.",
+                rule2: "Correct! R2 can now fire because B is true.",
+                fact2: "Correct! R2 deduces C.",
+                rule3: "Correct! R3 can now fire because C is true.",
+                fact3: "Correct! R3 deduces D."
+            };
+            
+            const feedback = document.getElementById('feedback');
+            feedback.innerHTML = '<div class="feedback success">✓ ' + messages[id] + '</div>';
+            setTimeout(() => feedback.innerHTML = '', 3000);
+        }
+        
+        function showErrorMessage(id, userAnswer) {
+            const feedback = document.getElementById('feedback');
+            let errorMsg = '';
+            
+            // Specific error messages based on the assignment requirements
+            if (id === 'rule1') {
+                if (userAnswer === 'R2') {
+                    errorMsg = 'No, this is not correct. Rule R2 cannot fire because its precondition B is not yet true. You must fire a rule that deduces B first.';
+                } else if (userAnswer === 'R3') {
+                    errorMsg = 'No, this is not correct. Rule R3 cannot fire because its precondition C is not yet true.';
+                } else {
+                    errorMsg = 'No, this is not correct. Look at which rules have their preconditions satisfied. Which rule can fire when A is true?';
+                }
+            } else if (id === 'fact1') {
+                if (userAnswer === 'C') {
+                    errorMsg = 'No, this is not correct. Rule R1 is "A → B", so it deduces B, not C. Check the right-hand side of rule R1.';
+                } else if (userAnswer === 'D') {
+                    errorMsg = 'No, this is not correct. Rule R1 is "A → B", so it deduces B, not D. The right-hand side of R1 tells you what fact is deduced.';
+                } else {
+                    errorMsg = 'No, this is not correct. What fact is on the right-hand side of rule R1?';
+                }
+            } else {
+                errorMsg = 'No, this is not correct. Check your answer.';
+            }
+            
+            feedback.innerHTML = '<div class="feedback error">✗ ' + errorMsg + '</div>';
+        }
+        
+        function checkAnswers() {
+            let allCorrect = true;
+            let feedback = document.getElementById('feedback');
+            let errors = [];
+            
+            // Check each answer
+            for (let id in correctAnswers) {
+                const input = document.getElementById(id);
+                const userAnswer = input.value.trim().toUpperCase();
+                const correctAnswer = correctAnswers[id];
+                
+                if (userAnswer === '') {
+                    allCorrect = false;
+                    errors.push('Please complete all fields.');
+                    input.className = 'incorrect';
+                } else if (userAnswer !== correctAnswer) {
+                    allCorrect = false;
+                    input.className = 'incorrect';
+                } else {
+                    input.className = 'correct';
+                }
+            }
+            
+            // Show final feedback
+            if (allCorrect) {
+                feedback.innerHTML = '<div class="feedback success">✓ Excellent! You\'ve completed the problem correctly.<br><br>You successfully identified that the rules fire in sequence: R1 → R2 → R3, deducing B, C, and D respectively.</div>';
+            } else {
+                if (errors.length > 0) {
+                    feedback.innerHTML = '<div class="feedback error">✗ ' + errors[0] + '</div>';
+                } else {
+                    feedback.innerHTML = '<div class="feedback error">✗ Some answers are incorrect. Please review the highlighted fields.</div>';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

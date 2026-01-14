@@ -1,0 +1,1206 @@
+<?xml version="1.0" standalone="yes"?>
+<stateGraph firstCheckAllStates="true" caseInsensitive="true" unordered="false" lockWidget="true" hintPolicy="Use Both Kinds of Bias" version="4.0" suppressStudentFeedback="Show All Feedback" highlightRightSelection="true" startStateNodeName="start" tutorType="Example-tracing Tutor">
+    <startNodeMessages>
+        <message>
+            <verb>SendNoteProperty</verb>
+            <properties>
+                <MessageType>StartProblem</MessageType>
+                <ProblemName>Problem2_Logic</ProblemName>
+            </properties>
+        </message>
+        <message>
+            <verb>SendNoteProperty</verb>
+            <properties>
+                <MessageType>StartStateEnd</MessageType>
+            </properties>
+        </message>
+    </startNodeMessages>
+
+    <!-- ==================== NODES ==================== -->
+    <node locked="false" doneState="false">
+        <text>start</text>
+        <uniqueID>1</uniqueID>
+        <dimension><x>400</x><y>50</y></dimension>
+    </node>
+
+    <!-- After R1 fired and B deduced -->
+    <node locked="false" doneState="false">
+        <text>State_R1_B</text>
+        <uniqueID>10</uniqueID>
+        <dimension><x>300</x><y>150</y></dimension>
+    </node>
+
+    <!-- After R2 fired and C deduced -->
+    <node locked="false" doneState="false">
+        <text>State_R2_C</text>
+        <uniqueID>20</uniqueID>
+        <dimension><x>500</x><y>150</y></dimension>
+    </node>
+
+    <!-- After R1,B and R2,C -->
+    <node locked="false" doneState="false">
+        <text>State_R1B_R2C</text>
+        <uniqueID>30</uniqueID>
+        <dimension><x>200</x><y>300</y></dimension>
+    </node>
+
+    <!-- After R1,B and R4,E -->
+    <node locked="false" doneState="false">
+        <text>State_R1B_R4E</text>
+        <uniqueID>40</uniqueID>
+        <dimension><x>400</x><y>300</y></dimension>
+    </node>
+
+    <!-- After R2,C and R1,B -->
+    <node locked="false" doneState="false">
+        <text>State_R2C_R1B</text>
+        <uniqueID>50</uniqueID>
+        <dimension><x>600</x><y>300</y></dimension>
+    </node>
+
+    <!-- After R1B, R2C, R3D -->
+    <node locked="false" doneState="false">
+        <text>State_BCD</text>
+        <uniqueID>60</uniqueID>
+        <dimension><x>200</x><y>450</y></dimension>
+    </node>
+
+    <!-- After R1B, R4E, R2C -->
+    <node locked="false" doneState="false">
+        <text>State_BCE</text>
+        <uniqueID>70</uniqueID>
+        <dimension><x>400</x><y>450</y></dimension>
+    </node>
+
+    <!-- After R1B, R2C, R4E -->
+    <node locked="false" doneState="false">
+        <text>State_BCE_v2</text>
+        <uniqueID>80</uniqueID>
+        <dimension><x>100</x><y>450</y></dimension>
+    </node>
+
+    <!-- After R2C, R1B, R3D -->
+    <node locked="false" doneState="false">
+        <text>State_BCD_v2</text>
+        <uniqueID>90</uniqueID>
+        <dimension><x>600</x><y>450</y></dimension>
+    </node>
+
+    <!-- After having B, C, D, E -->
+    <node locked="false" doneState="false">
+        <text>State_BCDE</text>
+        <uniqueID>100</uniqueID>
+        <dimension><x>400</x><y>600</y></dimension>
+    </node>
+
+    <!-- After R5 fired and F deduced -->
+    <node locked="false" doneState="false">
+        <text>State_Final_F</text>
+        <uniqueID>110</uniqueID>
+        <dimension><x>400</x><y>750</y></dimension>
+    </node>
+
+    <!-- Done node -->
+    <node locked="false" doneState="true">
+        <text>Done</text>
+        <uniqueID>999</uniqueID>
+        <dimension><x>400</x><y>900</y></dimension>
+    </node>
+
+    <!-- ==================== SOLUTION PATH 1: R1→B, R4→E, R2→C, R3→D, R5→F ==================== -->
+
+    <!-- Step 1a: R1 as first rule -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>1001</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule1</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R1</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R1 can fire because A is true.</successMessage>
+            <hintMessage>Which rules have their preconditions satisfied? Both R1 and R2 can fire since A is true.</hintMessage>
+            <hintMessage>You can start with R1, which states 'A → B'.</hintMessage>
+            <hintMessage>Please enter 'R1' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule1</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R1</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>1</sourceID>
+        <destID>10</destID>
+    </edge>
+
+    <!-- Step 1b: B as first deduced fact -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>1002</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact1</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>B</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R1 deduces B.</successMessage>
+            <hintMessage>What is on the right-hand side of rule R1?</hintMessage>
+            <hintMessage>Rule R1 is 'A → B', so it deduces B.</hintMessage>
+            <hintMessage>Please enter 'B' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact1</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">B</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>10</sourceID>
+        <destID>40</destID>
+    </edge>
+
+    <!-- Step 2a: R4 as second rule (Path 1) -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>1003</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule2</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R4</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R4 can fire because B is true.</successMessage>
+            <hintMessage>Now you can fire R2 or R4. Both have satisfied preconditions.</hintMessage>
+            <hintMessage>R4 states 'B → E' and B is true, so R4 can fire.</hintMessage>
+            <hintMessage>Please enter 'R4' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule2</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R4</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>40</sourceID>
+        <destID>70</destID>
+    </edge>
+
+    <!-- Step 2b: E as second deduced fact -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>1004</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact2</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>E</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R4 deduces E.</successMessage>
+            <hintMessage>What does R4 deduce?</hintMessage>
+            <hintMessage>Rule R4 is 'B → E', so it deduces E.</hintMessage>
+            <hintMessage>Please enter 'E' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact2</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">E</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>70</sourceID>
+        <destID>70</destID>
+    </edge>
+
+    <!-- Step 3a: R2 as third rule -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>1005</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule3</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R2</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R2 can fire because A is still true.</successMessage>
+            <hintMessage>Which rule can still fire? Remember A is still true.</hintMessage>
+            <hintMessage>R2 states 'A → C' and A is still true.</hintMessage>
+            <hintMessage>Please enter 'R2' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule3</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R2</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>70</sourceID>
+        <destID>70</destID>
+    </edge>
+
+    <!-- Step 3b: C as third deduced fact -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>1006</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact3</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>C</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R2 deduces C.</successMessage>
+            <hintMessage>What does R2 deduce?</hintMessage>
+            <hintMessage>Rule R2 is 'A → C', so it deduces C.</hintMessage>
+            <hintMessage>Please enter 'C' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact3</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">C</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>70</sourceID>
+        <destID>70</destID>
+    </edge>
+
+    <!-- Step 4a: R3 as fourth rule -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>1007</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule4</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R3</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R3 can fire because C is true.</successMessage>
+            <hintMessage>Now that C is deduced, which rule can fire?</hintMessage>
+            <hintMessage>R3 states 'C → D' and C is true.</hintMessage>
+            <hintMessage>Please enter 'R3' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule4</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R3</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>70</sourceID>
+        <destID>100</destID>
+    </edge>
+
+    <!-- Step 4b: D as fourth deduced fact -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>1008</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact4</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>D</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R3 deduces D. Now both E and D are true!</successMessage>
+            <hintMessage>What does R3 deduce?</hintMessage>
+            <hintMessage>Rule R3 is 'C → D', so it deduces D.</hintMessage>
+            <hintMessage>Please enter 'D' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact4</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">D</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>100</sourceID>
+        <destID>100</destID>
+    </edge>
+
+    <!-- Step 5a: R5 as fifth rule -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>1009</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule5</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R5</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R5 can fire because both E and D are true.</successMessage>
+            <hintMessage>Which rule requires both E and D to be true?</hintMessage>
+            <hintMessage>R5 states 'E and D → F', and both E and D are now true.</hintMessage>
+            <hintMessage>Please enter 'R5' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule5</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R5</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>100</sourceID>
+        <destID>110</destID>
+    </edge>
+
+    <!-- Step 5b: F as fifth deduced fact -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>1010</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact5</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>F</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R5 deduces F. All rules have been fired!</successMessage>
+            <hintMessage>What does R5 deduce?</hintMessage>
+            <hintMessage>Rule R5 is 'E and D → F', so it deduces F.</hintMessage>
+            <hintMessage>Please enter 'F' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact5</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">F</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>110</sourceID>
+        <destID>110</destID>
+    </edge>
+
+    <!-- ==================== SOLUTION PATH 2: R1→B, R2→C, R4→E, R3→D, R5→F ==================== -->
+
+    <!-- From State_R1B (node 10), go to R2 instead of R4 -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>2001</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule2</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R2</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R2 can fire because A is true.</successMessage>
+            <hintMessage>You can fire R2 or R4. Both have their preconditions satisfied.</hintMessage>
+            <hintMessage>R2 states 'A → C' and A is true, so R2 can fire.</hintMessage>
+            <hintMessage>Please enter 'R2' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule2</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R2</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>40</sourceID>
+        <destID>30</destID>
+    </edge>
+
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>2002</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact2</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>C</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R2 deduces C.</successMessage>
+            <hintMessage>What does R2 deduce?</hintMessage>
+            <hintMessage>Please enter 'C' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact2</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">C</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>30</sourceID>
+        <destID>80</destID>
+    </edge>
+
+    <!-- Continue Path 2: R4 as third rule -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>2003</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule3</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R4</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R4 can fire because B is true.</successMessage>
+            <hintMessage>Which rule can fire now? You have B and C deduced.</hintMessage>
+            <hintMessage>R4 states 'B → E' and B is true.</hintMessage>
+            <hintMessage>Please enter 'R4' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule3</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R4</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>80</sourceID>
+        <destID>80</destID>
+    </edge>
+
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>2004</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact3</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>E</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R4 deduces E.</successMessage>
+            <hintMessage>What does R4 deduce?</hintMessage>
+            <hintMessage>Please enter 'E' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact3</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">E</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>80</sourceID>
+        <destID>80</destID>
+    </edge>
+
+    <!-- R3 as fourth rule on Path 2 -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>2005</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule4</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R3</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R3 can fire because C is true.</successMessage>
+            <hintMessage>Now that C is deduced, which rule can fire?</hintMessage>
+            <hintMessage>Please enter 'R3' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule4</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R3</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>80</sourceID>
+        <destID>100</destID>
+    </edge>
+
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>2006</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact4</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>D</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R3 deduces D. Now you have both E and D!</successMessage>
+            <hintMessage>What does R3 deduce?</hintMessage>
+            <hintMessage>Please enter 'D' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact4</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">D</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>100</sourceID>
+        <destID>100</destID>
+    </edge>
+
+    <!-- Path 2 connects to same R5→F as Path 1 (already defined above) -->
+
+    <!-- ==================== SOLUTION PATH 3: R1→B, R2→C, R3→D, R4→E, R5→F ==================== -->
+
+    <!-- From State_R1B_R2C (node 30), go to R3 -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>3001</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule3</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R3</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R3 can fire because C is true.</successMessage>
+            <hintMessage>You can fire R3 or R4. Both have satisfied preconditions.</hintMessage>
+            <hintMessage>R3 states 'C → D' and C is true.</hintMessage>
+            <hintMessage>Please enter 'R3' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule3</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R3</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>30</sourceID>
+        <destID>60</destID>
+    </edge>
+
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>3002</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact3</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>D</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R3 deduces D.</successMessage>
+            <hintMessage>What does R3 deduce?</hintMessage>
+            <hintMessage>Please enter 'D' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact3</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">D</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>60</sourceID>
+        <destID>60</destID>
+    </edge>
+
+    <!-- R4 as fourth rule on Path 3 -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>3003</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule4</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R4</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R4 can fire because B is true.</successMessage>
+            <hintMessage>Which rule can fire now?</hintMessage>
+            <hintMessage>R4 states 'B → E' and B is true.</hintMessage>
+            <hintMessage>Please enter 'R4' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule4</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R4</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>60</sourceID>
+        <destID>100</destID>
+    </edge>
+
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>3004</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact4</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>E</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R4 deduces E. Now you have both E and D!</successMessage>
+            <hintMessage>What does R4 deduce?</hintMessage>
+            <hintMessage>Please enter 'E' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact4</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">E</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>100</sourceID>
+        <destID>100</destID>
+    </edge>
+
+    <!-- ==================== SOLUTION PATH 4: R2→C, R1→B, R3→D, R4→E, R5→F ==================== -->
+
+    <!-- Start with R2 instead of R1 -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>4001</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule1</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R2</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R2 can fire because A is true.</successMessage>
+            <hintMessage>Which rules can fire? Both R1 and R2 have their preconditions satisfied.</hintMessage>
+            <hintMessage>You can start with R2, which states 'A → C'.</hintMessage>
+            <hintMessage>Please enter 'R2' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule1</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R2</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>1</sourceID>
+        <destID>20</destID>
+    </edge>
+
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>4002</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact1</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>C</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R2 deduces C.</successMessage>
+            <hintMessage>What is on the right-hand side of rule R2?</hintMessage>
+            <hintMessage>Rule R2 is 'A → C', so it deduces C.</hintMessage>
+            <hintMessage>Please enter 'C' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact1</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">C</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>20</sourceID>
+        <destID>50</destID>
+    </edge>
+
+    <!-- R1 as second rule on Path 4 -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>4003</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule2</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R1</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R1 can fire because A is still true.</successMessage>
+            <hintMessage>Which other rule can fire? Remember A is still true.</hintMessage>
+            <hintMessage>R1 states 'A → B' and A is still true.</hintMessage>
+            <hintMessage>Please enter 'R1' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule2</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R1</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>50</sourceID>
+        <destID>90</destID>
+    </edge>
+
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>4004</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact2</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>B</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R1 deduces B.</successMessage>
+            <hintMessage>What does R1 deduce?</hintMessage>
+            <hintMessage>Please enter 'B' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact2</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">B</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>90</sourceID>
+        <destID>90</destID>
+    </edge>
+
+    <!-- R3 as third rule on Path 4 -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>4005</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule3</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R3</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R3 can fire because C is true.</successMessage>
+            <hintMessage>You can fire R3 or R4. Both have satisfied preconditions.</hintMessage>
+            <hintMessage>R3 states 'C → D' and C is true.</hintMessage>
+            <hintMessage>Please enter 'R3' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule3</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R3</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>90</sourceID>
+        <destID>90</destID>
+    </edge>
+
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>4006</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact3</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>D</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R3 deduces D.</successMessage>
+            <hintMessage>What does R3 deduce?</hintMessage>
+            <hintMessage>Please enter 'D' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact3</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">D</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>90</sourceID>
+        <destID>90</destID>
+    </edge>
+
+    <!-- R4 as fourth rule on Path 4 -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>4007</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule4</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R4</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R4 can fire because B is true.</successMessage>
+            <hintMessage>Which rule can fire now?</hintMessage>
+            <hintMessage>R4 states 'B → E' and B is true.</hintMessage>
+            <hintMessage>Please enter 'R4' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule4</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R4</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>90</sourceID>
+        <destID>100</destID>
+    </edge>
+
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>4008</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact4</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>E</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Correct! R4 deduces E. Now you have both E and D!</successMessage>
+            <hintMessage>What does R4 deduce?</hintMessage>
+            <hintMessage>Please enter 'E' in the highlighted field.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact4</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">E</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>100</sourceID>
+        <destID>100</destID>
+    </edge>
+
+    <!-- ==================== BUGGY EDGES ==================== -->
+
+    <!-- Buggy: Try to fire R3 first (C not true yet) -->
+    <edge>
+        <actionLabel preferPathMark="false">
+            <uniqueID>9001</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule1</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R3</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct. Rule R3 cannot fire because its precondition C is not yet true. You need to fire a rule that deduces C first.</buggyMessage>
+            <actionType>Buggy Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule1</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R3</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>1</sourceID>
+        <destID>1</destID>
+    </edge>
+
+    <!-- Buggy: Try to fire R4 first (B not true yet) -->
+    <edge>
+        <actionLabel preferPathMark="false">
+            <uniqueID>9002</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule1</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R4</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct. Rule R4 cannot fire because its precondition B is not yet true. You need to fire a rule that deduces B first.</buggyMessage>
+            <actionType>Buggy Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule1</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R4</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>1</sourceID>
+        <destID>1</destID>
+    </edge>
+
+    <!-- Buggy: Try to fire R5 first (E and D not both true yet) -->
+    <edge>
+        <actionLabel preferPathMark="false">
+            <uniqueID>9003</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>rule1</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>R5</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct. Rule R5 requires both E and D to be true. Neither has been deduced yet.</buggyMessage>
+            <actionType>Buggy Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">rule1</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">R5</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>1</sourceID>
+        <destID>1</destID>
+    </edge>
+
+    <!-- Buggy: Wrong fact deduction for R1 (C instead of B) -->
+    <edge>
+        <actionLabel preferPathMark="false">
+            <uniqueID>9004</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact1</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>C</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct. Rule R1 is 'A → B', so it deduces B, not C. Check the right-hand side of the rule.</buggyMessage>
+            <actionType>Buggy Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact1</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">C</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>10</sourceID>
+        <destID>10</destID>
+    </edge>
+
+    <!-- Buggy: Wrong fact deduction for R1 (D instead of B) -->
+    <edge>
+        <actionLabel preferPathMark="false">
+            <uniqueID>9005</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact1</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>D</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct. Rule R1 is 'A → B', so it deduces B, not D.</buggyMessage>
+            <actionType>Buggy Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact1</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">D</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>10</sourceID>
+        <destID>10</destID>
+    </edge>
+
+    <!-- Buggy: Wrong fact for R2 (B instead of C) when starting with R2 -->
+    <edge>
+        <actionLabel preferPathMark="false">
+            <uniqueID>9006</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact1</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>B</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct. Rule R2 is 'A → C', so it deduces C, not B. Check the right-hand side of the rule.</buggyMessage>
+            <actionType>Buggy Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact1</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">B</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>20</sourceID>
+        <destID>20</destID>
+    </edge>
+
+    <!-- Buggy: Wrong fact for R3 -->
+    <edge>
+        <actionLabel preferPathMark="false">
+            <uniqueID>9007</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact3</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>B</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct. Rule R3 is 'C → D', so it deduces D, not B.</buggyMessage>
+            <actionType>Buggy Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact3</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">B</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>60</sourceID>
+        <destID>60</destID>
+    </edge>
+
+    <!-- Buggy: Wrong fact for R4 -->
+    <edge>
+        <actionLabel preferPathMark="false">
+            <uniqueID>9008</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact2</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>C</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct. Rule R4 is 'B → E', so it deduces E, not C.</buggyMessage>
+            <actionType>Buggy Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact2</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">C</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>40</sourceID>
+        <destID>40</destID>
+    </edge>
+
+    <!-- Buggy: Wrong fact for R5 -->
+    <edge>
+        <actionLabel preferPathMark="false">
+            <uniqueID>9009</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>fact5</value></Selection>
+                    <Action><value>UpdateTextField</value></Action>
+                    <Input><value>D</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct. Rule R5 is 'E and D → F', so it deduces F, not D.</buggyMessage>
+            <actionType>Buggy Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">fact5</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">UpdateTextField</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">D</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>110</sourceID>
+        <destID>110</destID>
+    </edge>
+
+    <!-- ==================== DONE BUTTON ==================== -->
+    <edge>
+        <actionLabel preferPathMark="true" minTraversals="0" maxTraversals="1">
+            <uniqueID>9999</uniqueID>
+            <message>
+                <verb>NotePropertySet</verb>
+                <properties>
+                    <MessageType>InterfaceAction</MessageType>
+                    <Selection><value>done</value></Selection>
+                    <Action><value>ButtonPressed</value></Action>
+                    <Input><value>-1</value></Input>
+                </properties>
+            </message>
+            <buggyMessage>No, this is not correct.</buggyMessage>
+            <successMessage>Excellent! You've completed the problem correctly.</successMessage>
+            <hintMessage>Click Done to finish the problem.</hintMessage>
+            <actionType>Correct Action</actionType>
+            <matchers Concatenation="true">
+                <Selection><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">done</matcherParameter></matcher></Selection>
+                <Action><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">ButtonPressed</matcherParameter></matcher></Action>
+                <Input><matcher><matcherType>ExactMatcher</matcherType><matcherParameter name="single">-1</matcherParameter></matcher></Input>
+                <Actor linkTriggered="false">Student</Actor>
+            </matchers>
+        </actionLabel>
+        <sourceID>110</sourceID>
+        <destID>999</destID>
+    </edge>
+
+</stateGraph>

@@ -1,0 +1,116 @@
+/* Logic Tutor Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f5f5f5;
+}
+
+.problem-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+}
+
+h3 {
+    color: #34495e;
+    margin-top: 20px;
+}
+
+.rules-section {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.rules-section ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.rules-section li {
+    margin: 8px 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.rules-section p {
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.instructions {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #fff9e6;
+    border-left: 4px solid #f39c12;
+}
+
+.instructions .note {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-top: 10px;
+}
+
+.solution-section {
+    margin-top: 30px;
+}
+
+.solution-section table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.solution-section td {
+    padding: 8px;
+}
+
+.solution-section td.label {
+    width: 200px;
+    text-align: right;
+    padding-right: 15px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.rule-input, .fact-input {
+    width: 150px;
+    padding: 8px;
+    font-size: 14px;
+    border: 2px solid #bdc3c7;
+    border-radius: 4px;
+}
+
+.rule-input:focus, .fact-input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.button-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#done {
+    padding: 10px 30px;
+    font-size: 16px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#done:hover {
+    background-color: #229954;
+}
